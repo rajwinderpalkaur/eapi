@@ -92,7 +92,20 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        // $product = Product::find($product->id);
+        // $product->name = $request->name;
+        // $product->detail = $request->description;
+        // $product->price = $request->price;
+        // $product->stock = $request->stock;
+        // $product->discount = $request->discount;
+        // $product->update();
+        
+        // return response([
+        //     'date'=>new ProductResource($product)
+        // ],"");
+        $request['detail'] = $request->description;
+        unset($request['description']);
+        $product->update($request->all());
     }
 
     /**
