@@ -23,8 +23,8 @@ class ProductCollection extends JsonResource
             'price'=>$this->price,
             'rating'=>$this->r->count()>0 ?round($this->r->sum('star')/$this->r->count(),2) : 'Not Rated Yet',
             'discount'=>$this->discount,
-            'href'=>[
-                'review'=>route('products.show',$this->id)
+            'link'=>[
+                'review'=>stripslashes (route('products.show',$this->id))
             ]
         ];
     }
